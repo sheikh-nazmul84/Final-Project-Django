@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Page</title>
+</head>
+<body>
+<form method="POST" action="/update/{{buying.buyId}}">
+
+    {% csrf_token %}
+    <div>
+        <div>
+            <label>BuyId</label>
+            <div>
+                <input type="text" name="buyId" value="{{buying.buyId}}">
+            </div>
+                <label>ItemName</label>
+            <div>
+                <input type="text" name="itemName" value="{{buying.itemName}}">
+            </div>
+                <label>ItemPrice</label>
+            <div>
+                <input type="text" name="itemPrice" value="{{buying.itemPrice}}">
+            </div>
+                <label>totalQty</label>
+            <div>
+                <input type="text" name="totalQty" value="{{buying.totalQty}}">
+            </div>
+        </div>
+        <button type="submit"> SUBMIT</button>
+    </div>
+</form>
+</body>
+</html>

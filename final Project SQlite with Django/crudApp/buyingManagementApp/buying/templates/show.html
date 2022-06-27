@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index Page</title>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>BuyId</th>
+                <th>Item Name</th>
+                <th>ItemPrice</th>
+                <th>TotalQty</th>
+                <th>TotalPrice</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for buying in buyings %}
+            <tr>
+                <td>{{buying.buyId}}</td>
+                <td>{{buying.itemName}}</td>
+                <td>{{buying.itemPrice}}</td>
+                <td>{{buying.totalQty}}</td>
+                <td>{% widthratio buying.itemPrice 1 buying.totalQty  %}</td>
+                <td>
+                    <a href="edit/{{buying.buyId}}"> Edit</a>
+                     <a href="delete/{{buying.buyId}}"> Delete</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
