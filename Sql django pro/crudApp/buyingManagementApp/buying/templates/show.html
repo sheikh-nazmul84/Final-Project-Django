@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Show The Item</title>
+        <style>
+            tr{
+                background-color: rgba(13, 226, 241, 0.7);
+                width: 300px;
+                height: 10-40px;
+                margin-left: 1000px;
+                margin-top: 10;
+                border-radius: 6px;
+            }
+            label{
+                color: #0c0101;
+                font-size: 15px;
+                margin-left: 10px;
+            }
+            input[type=text],input[type=password]{
+                width: 180px;
+                height: 20px;
+                border-radius: 6px;
+                border: 2px solid black;
+                font-size: 15px;
+                background-color: white;
+                margin-left: 10px;
+            }
+            a[type=submit]{
+                width: 100px;
+                height: 50px;
+                background-color: rgb(17, 174, 235);
+                color: white;
+                font-size: 20px;
+                border-radius: 6px;
+                margin-left: 100px;
+            }
+            a[type=submit]:hover{
+                background-color:blue;
+                color: white;
+                cursor: pointer;
+
+            }
+            th{
+                text-align: center;
+                color: rgb(29, 18, 18);
+                font-size: 30px;
+                margin-top: 5px;
+            }
+            td{
+                text-align: center;
+                color: rgb(29, 18, 18);
+                font-size: 30px;
+                margin-top: 5px;
+            }
+        </style>
+    <title>Show Page</title>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>SrNo</th>
+                <th>ItemName</th>
+                <th>ItemPrice</th>
+                <th>TotalQty</th>
+                <th>TotalPrice</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for buying in buyings %}
+            <tr>
+                <td>{{buying.srNo}}</td>
+                <td>{{buying.itemName}}</td>
+                <td>{{buying.itemPrice}}</td>
+                <td>{{buying.totalQty}}</td>
+                <td>{% widthratio buying.itemPrice 1 buying.totalQty %}</td>
+                <td>
+                    <a href="edit/{{buying.srNo}}"> Edit</a>
+                    <a href="delete/{{buying.srNo}}"> Delete</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+                <label>SrNo</label>
+                <div>
+                    {{form.srNo}}
+                </div>
+                <label>ItemName</label>
+                <div>
+                    {{form.itemName}}
+                </div>
+                <label>ItemPrice</label>
+                <div>
+                    {{form.itemPrice}}
+                </div>
+                <label>TotalQty</label>
+                <div>
+                    {{form.totalQty}}
+                </div>
+                <label>TotalPrice</label>
+                <div>
+                    {{form.totalPrice}}
+                </div><br>
+<button class="btn btn-primary btn-lg" role="button">SUBMIT</button>
+</body>
+</html>
+#show
+<table>
+        <thead>
+            <tr>
+                <th>SrNo</th>
+                <th>ItemName</th>
+                <th>ItemPrice</th>
+                <th>TotalQty</th>
+                <th>TotalPrice</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for buying in buyings %}
+            <tr>
+                <td>{{buying.srNo}}</td>
+                <td>{{buying.itemName}}</td>
+                <td>{{buying.itemPrice}}</td>
+                <td>{{buying.totalQty}}</td>
+                <td>{{buying.totalPrice}}</td>
+                <td>
+                    <a href="edit/{{buying.srNo}}"> Edit</a>
+                     <a href="delete/{{buying.srNo}}"> Delete</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+#edit
+<form method="POST" action="/update/{{buying.srNo}}">
+
+    {% csrf_token %}
+    <div>
+        <div>
+            <label>SrNo</label>
+            <div>
+                <input type="text" name="srNo" value="{{buying.srNo}}">
+            </div>
+                <label>ItemName</label>
+            <div>
+                <input type="text" name="itemName" value="{{buying.itemName}}">
+            </div>
+                <label>ItemPrice</label>
+            <div>
+                <input type="text" name="itemPrice" value="{{buying.itemPrice}}">
+            </div>
+                <label>TotalQty</label>
+            <div>
+                <input type="text" name="totalQty" value="{{buying.totalQty}}">
+            </div>
+                <label>TotalPrice</label>
+            <div>
+                <input type="text" name="totalPrice" value="{{buying.totalPrice}}">
+            </div>
+        </div>
+        <button type="submit"> SUBMIT</button>
+    </div>
+</form>
